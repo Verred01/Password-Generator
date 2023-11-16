@@ -1,32 +1,39 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
-var numbers = "0123456789".split;
-var lowers = "abcdefghijklmnopqrstuvwxyz".split;
-var uppers = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split;
-var symbols = " !#$%&'()*+,-./:;<=>?@[\]^_`{|}~".split;
+var numbers = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+var lowers = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
+var uppers = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
+var symbols = ["!", "#", "$", "%", "&", "'", "()", "*", "+", ",", "-", ".", "/", ":", ";", "<", "=", ">", "?", "@", "[", "]", "^", "_", "`", "{", "|", "}", "~"]
+var length = 0;
+var password = "";
 // Write password to the #password input
 function writePassword() {
   var getprompts = prompts();
+  console.log(getprompts);
   var passwordText = document.querySelector("#password");
+  console.log(passwordText);
   if (getprompts) {
-    var password = generatePassword();
-    passwordText.value === password;
+    passwordText.value = generatePassword();
   } else {
     passwordText.value = "";
   }
 }
 
 function generatePassword() {
-  var password = "";
+  console.log(password);
   for (i = 0; i < length; i++) {
     var randomIndex = Math.floor(Math.random() * array.length);
     password = password + array[randomIndex];
+    console.log(length);
+    console.log(password);
   }
+  console.log(password);
+  return password;
 }
 
 function prompts() {
   array = [];
-  var length = parseInt(prompt("The minimun length is 8 characters and the maximun is 128 characters.", "Please enter a number."));
+  length = parseInt(prompt("The minimun length is 8 characters and the maximun is 128 characters.", "Please enter a number."));
   if (length < 8 || length > 128 || length === undefined) {
     alert("Your password must be a number 8-128. Please try again.");
     return;
@@ -38,18 +45,22 @@ function prompts() {
   }
   if (numbersconfirm) {
     array = array.concat(numbers);
+    console.log(array);
   }
   if (lowersconfirm) {
     array = array.concat(lowers);
+    console.log(array);
   }
   if (uppersconfirm) {
     array = array.concat(uppers);
+    console.log(array);
   }
   if (symbolsconfirm) {
     array = array.concat(symbols);
+    console.log(array);
   }
-  return;
+  return array;
 }
 
 // Add event listener to generate button
-generateBtn.addEventListener("click", writePassword);
+generateBtn.addEventListener("click", writePassword());
